@@ -6,14 +6,14 @@ import com.serivce.book.dto.BookDTO;
 
 public interface BookService {
 
-	public List<BookDTO> getAllBooks();
+  public List<BookDTO> getAllBooks();
 
-	public BookDTO getBookById(Long bookId);
+  public BookDTO getBookById(Long bookId);
 
-	public boolean addBook(BookDTO bookDTO);
+  public boolean addBook(BookDTO bookDTO);
 
-	public boolean deleteBook(Long bookId);
+  public boolean deleteBook(Long bookId);
 
-	public boolean updateBook(BookDTO bookDTO);
+  public boolean updateBook(BookDTO bookDTO);
 
 }

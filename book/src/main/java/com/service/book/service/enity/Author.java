@@ -15,74 +15,74 @@ import javax.persistence.Table;
 @Table(name = "author")
 public class Author {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-	private Long authorId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id")
+  private Long authorId;
 
-	@Column(name="name")
-	private String name;
+  @Column(name = "name")
+  private String name;
 
-	@Column(name="created")
-	private Date created;
+  @Column(name = "created")
+  private Date created;
 
-	@Column(name="updated")
-	private Date updated;
-	
-	@Column(name="is_deleted")
-	private Boolean deleted;
-	
-	@ManyToOne
-    @JoinColumn(name="book_id", nullable=false)
-    private Books books;
+  @Column(name = "updated")
+  private Date updated;
 
-	public Long getAuthorId() {
-		return authorId;
-	}
+  @Column(name = "is_deleted")
+  private Boolean deleted;
 
-	public void setAuthorId(Long authorId) {
-		this.authorId = authorId;
-	}
+  @ManyToOne
+  @JoinColumn(name = "book_id", nullable = false)
+  private Books books;
 
-	public String getName() {
-		return name;
-	}
+  public Long getAuthorId() {
+    return authorId;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setAuthorId(Long authorId) {
+    this.authorId = authorId;
+  }
 
-	public Date getCreated() {
-		return created;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setCreated(Date created) {
-		this.created = created;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public Date getUpdated() {
-		return updated;
-	}
+  public Date getCreated() {
+    return created;
+  }
 
-	public void setUpdated(Date updated) {
-		this.updated = updated;
-	}
+  public void setCreated(Date created) {
+    this.created = created;
+  }
 
-	public Boolean getDeleted() {
-		return deleted;
-	}
+  public Date getUpdated() {
+    return updated;
+  }
 
-	public void setDeleted(Boolean deleted) {
-		this.deleted = deleted;
-	}
+  public void setUpdated(Date updated) {
+    this.updated = updated;
+  }
 
-	public Books getBooks() {
-		return books;
-	}
+  public Boolean getDeleted() {
+    return deleted;
+  }
 
-	public void setBooks(Books books) {
-		this.books = books;
-	}
-	
-	
+  public void setDeleted(Boolean deleted) {
+    this.deleted = deleted;
+  }
+
+  public Books getBooks() {
+    return books;
+  }
+
+  public void setBooks(Books books) {
+    this.books = books;
+  }
+
+
 }
