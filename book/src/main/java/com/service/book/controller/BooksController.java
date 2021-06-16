@@ -21,47 +21,53 @@ import com.service.book.misc.Utility;
 @RestController
 @RequestMapping("/books")
 public class BooksController {
-	
-	@Autowired
-	private BookService bookService;
 
-	@GetMapping
-	public ResponseEntity<List<BookDTO>> getAllBooks(){
-		return new ResponseEntity<List<BookDTO>>(bookService.getAllBooks(),HttpStatus.OK);
-	}
+  @Autowired
+  private BookService bookService;
 
-	@GetMapping("/{bookId}")
-	public ResponseEntity<BookDTO> getBookById(@PathVariable("bookId") Long bookId){
-		return new ResponseEntity<BookDTO>(bookService.getBookById(bookId),HttpStatus.OK);
-	}
-	
-	@PostMapping
-	public ResponseEntity<String> addBook(@RequestBody BookDTO bookDTO) {
-		if (!Utility.validateRequest(bookDTO)) {
-			return new ResponseEntity<String>("Please ensure all inputs are correct !!", HttpStatus.BAD_REQUEST);
-		}
-		if (bookService.addBook(bookDTO)) {
-			return new ResponseEntity<String>("Book Id :"+ bookDTO.getBookId() + " book info added sucessfully !!", HttpStatus.OK);
-		}
-		return new ResponseEntity<String>("Error occurered, Please try after sometime", HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
-	@DeleteMapping("/{bookId}")
-	public ResponseEntity<String> deleteBook(@PathVariable("bookId") Long bookId){
-		if(bookService.deleteBook(bookId)) {
-			return new ResponseEntity<String>("Book record deleted successfully !! ",HttpStatus.OK);
-		}
-		return new ResponseEntity<String>("Issue while deleting record Please try aftersome time !! ",HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
-	@PutMapping("/{bookId}")
-	public ResponseEntity<String> updateBook(@RequestBody BookDTO bookDTO){
-		if(bookDTO == null || bookDTO.getBookId() == null) {
-			return new ResponseEntity<String>("Book Id is mandatory !!", HttpStatus.BAD_REQUEST);
-		}
-		if(bookService.updateBook(bookDTO)) {
-			return new ResponseEntity<String>("Book Id :"+ bookDTO.getBookId() + " book info updated sucessfully !!", HttpStatus.OK);
-		}
-		return new ResponseEntity<String>("Error occurered, Please try after sometime", HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+  @GetMapping
+  public ResponseEntity<List<BookDTO>> getAllBooks() {
+    return new ResponseEntity<List<BookDTO>>(bookService.getAllBooks(), HttpStatus.OK);
+  }
+
+  @GetMapping("/{bookId}")
+  public ResponseEntity<BookDTO> getBookById(@PathVariable("bookId") Long bookId) {
+    return new ResponseEntity<BookDTO>(bookService.getBookById(bookId), HttpStatus.OK);
+  }
+
+  @PostMapping
+  public ResponseEntity<String> addBook(@RequestBody BookDTO bookDTO) {
+    if (!Utility.validateRequest(bookDTO)) {
+      return new ResponseEntity<String>("Please ensure all inputs are correct !!",
+          HttpStatus.BAD_REQUEST);
+    }
+    if (bookService.addBook(bookDTO)) {
+      return new ResponseEntity<String>(
+          "Book Id :" + bookDTO.getBookId() + " book info added sucessfully !!", HttpStatus.OK);
+    }
+    return new ResponseEntity<String>("Error occurered, Please try after sometime",
+        HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  @DeleteMapping("/{bookId}")
+  public ResponseEntity<String> deleteBook(@PathVariable("bookId") Long bookId) {
+    if (bookService.deleteBook(bookId)) {
+      return new ResponseEntity<String>("Book record deleted successfully !! ", HttpStatus.OK);
+    }
+    return new ResponseEntity<String>("Issue while deleting record Please try aftersome time !! ",
+        HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  @PutMapping("/{bookId}")
+  public ResponseEntity<String> updateBook(@RequestBody BookDTO bookDTO) {
+    if (bookDTO == null || bookDTO.getBookId() == null) {
+      return new ResponseEntity<String>("Book Id is mandatory !!", HttpStatus.BAD_REQUEST);
+    }
+    if (bookService.updateBook(bookDTO)) {
+      return new ResponseEntity<String>(
+          "Book Id :" + bookDTO.getBookId() + " book info updated sucessfully !!", HttpStatus.OK);
+    }
+    return new ResponseEntity<String>("Error occurered, Please try after sometime",
+        HttpStatus.INTERNAL_SERVER_ERROR);
+  }
 }

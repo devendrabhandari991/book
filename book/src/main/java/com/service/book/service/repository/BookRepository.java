@@ -12,9 +12,9 @@ import com.service.book.service.enity.Books;
 @Repository
 public interface BookRepository extends JpaRepository<Books, Long> {
 
-	List<Books> findByDeletedFalse();
+  List<Books> findByDeletedFalse();
 
-	@Query("select b from Books b where b.bookId = ?1 and deleted = false ")
-	Optional<Books> findByIdAndDeletedFalse(Long bookId);
+  @Query("select b from Books b where b.bookId = ?1 and deleted = false ")
+  Optional<Books> findByIdAndDeletedFalse(Long bookId);
 
 }
